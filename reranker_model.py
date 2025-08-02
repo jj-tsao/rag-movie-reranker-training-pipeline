@@ -13,17 +13,19 @@ class RerankerModel(nn.Module):
         self.use_residual = use_residual
         self.use_layernorm = use_layernorm
 
-    def forward(self, input_ids, attention_mask):
-        outputs = self.encoder(input_ids=input_ids, attention_mask=attention_mask)
+    def forward(self, input_ids, attention_mask, token_type_ids=None):
+        outputs = self.encoder(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids)
         cls_rep = outputs.last_hidden_state[:, 0]  # [CLS] token
 
         transformed = self.activation(self.linear1(cls_rep))
 
         if self.use_residual:
-            if transformed.size(-1) == cls_rep.size(-1):  # Dimension check
+            # Add residual connections when dimensions match
+            if transformed.size(-1) == cls_rep.size(-1):
                 transformed = transformed + cls_rep
+            # Skip residual connection if dimensions don't match (ptoentially, add a projection layer if needed in the future)
             else:
-                pass # Skip residual connection if dimensions don't match
+                pass 
         
         if self.use_layernorm:
             transformed = self.layernorm(transformed)

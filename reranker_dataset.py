@@ -34,8 +34,11 @@ class TripletDataset(Dataset):
         return {
             'input_ids_pos': pos_inputs['input_ids'].squeeze(0),
             'attention_mask_pos': pos_inputs['attention_mask'].squeeze(0),
+            'token_type_ids_pos': pos_inputs['token_type_ids'].squeeze(0),
             'input_ids_neg': neg_inputs['input_ids'].squeeze(0),
             'attention_mask_neg': neg_inputs['attention_mask'].squeeze(0),
+            'token_type_ids_neg': neg_inputs['token_type_ids'].squeeze(0),
+
         }
 
     def print_sample(self, idx):
