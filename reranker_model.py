@@ -6,10 +6,10 @@ class RerankerModel(nn.Module):
         super().__init__()
         self.encoder = AutoModel.from_pretrained(model_name)
         self.linear1 = nn.Linear(hidden_size, intermediate_size)
-        self.layernorm  = nn.LayerNorm(intermediate_size)
-        self.linear2 = nn.Linear(intermediate_size, 1)
-        self.dropout = nn.Dropout(dropout_prob)
         self.activation = nn.GELU()
+        self.layernorm  = nn.LayerNorm(intermediate_size)
+        self.dropout = nn.Dropout(dropout_prob)
+        self.linear2 = nn.Linear(intermediate_size, 1)
         self.use_residual = use_residual
         self.use_layernorm = use_layernorm
 
