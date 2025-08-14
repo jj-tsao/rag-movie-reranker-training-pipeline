@@ -11,12 +11,12 @@ from src.config import (
     QDRANT_TV_COLLECTION_NAME,
     get_reranker_path,
 )
-from app.llm.custom_models import (
+from src.custom_models import (
     load_bm25_files,
     load_sentence_model,
 )
 from src.media_retriever import MediaRetriever
-from app.retrieval.vectorstore import connect_qdrant
+from src.vectorstore import connect_qdrant
 from model.reranker_model import RerankerModel
 
 start = time.time()
