@@ -235,8 +235,6 @@ rag-movie-reranker-training-pipeline/
 
 ```
 
-> If you’re splitting repos, keep runtime code (hybrid retrieval, RRF fusion, API/UI) in a separate `reelix-pipeline` repo and treat this repo as the **train/eval artifact source of truth**.
-
 ---
 
 ## 💻 Usage
