@@ -2,7 +2,7 @@
 
 This repository provides the **training and evaluation pipeline** for a cross-encoder reranker that improves movie and TV recommendations.
 
-- **Query + Context** — The reranker model scores the semantic match between a free-form query and rich title metadata (title, genres, cast, plot, keywords, etc.).
+- **Query + Context** — Reelix reranker scores the semantic match between a free-form query and rich title metadata (title, genres, cast, plot, keywords, etc.).
 - **Reranking Layer** — Reorders candidates from dense and BM25 retrievers, surfacing the most contextually aligned results.
 - **Pipeline** — Includes dataset construction, negative sampling, training scripts, and evaluation with baselines and hybrid fusion.
 
@@ -13,6 +13,7 @@ This repository provides the **training and evaluation pipeline** for a cross-en
 - Live Product: [**Reelix AI**](https://reelixai.netlify.app/) 
 - Frontend app repo: [rag-movie-recommender-app](https://github.com/jj-tsao/rag-movie-recommender-app)  
 - Embedding pipeline repo: [rag-movie-embedding-pipeline](https://github.com/jj-tsao/rag-movie-embedding-pipeline)
+- Model host on Hugging Face Hub [JJTsao/movietv-reranker-cross-encoder-base-v1](https://huggingface.co/JJTsao/movietv-reranker-cross-encoder-base-v1)
 
 ---
 
