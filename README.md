@@ -12,7 +12,6 @@ This repository provides the **training and evaluation pipeline** for a cross-en
 
 - Live Product: [**Reelix AI**](https://reelixai.netlify.app/) 
 - Frontend app repo: [rag-movie-recommender-app](https://github.com/jj-tsao/rag-movie-recommender-app)  
-- Embedding pipeline repo: [rag-movie-embedding-pipeline](https://github.com/jj-tsao/rag-movie-embedding-pipeline)
 - Trained Model (Hugging Face Hub) [JJTsao/movietv-reranker-cross-encoder-base-v1](https://huggingface.co/JJTsao/movietv-reranker-cross-encoder-base-v1)
 
 ---
@@ -62,6 +61,36 @@ This repository provides the **training and evaluation pipeline** for a cross-en
 
 
 See `reranker_model.py` for details and configuration flags.
+
+---
+```
+Inputs
+┌───────────────────────────────────────────────────────────────────────────┐
+│               [CLS]  {query tokens}  {title_context tokens}               │
+└───────────────────────────────────────────────────────────────────────────┘
+                                   │
+                                   ▼
+┌───────────────────────────────────────────────────────────────────────────┐
+│                         BERT (bert-base-uncased)                          │
+│  ┌──────────┐  ┌──────────┐        ...        ┌──────────┐  ┌──────────┐  │
+│  │ Embeds   │→→│  Layer 1 │→→→→→→→→→→→→→→→→→→→│ Layer 11 │→→│ Layer 12 │  │
+│  └──────────┘  └──────────┘                   └──────────┘  └──────────┘  │
+└───────────────────────────────────────────────────────────────────────────┘
+                                   │
+                       CLS-pooled vector (cls_rep)
+                                   │
+                                   ▼
+┌───────────────────────────────────────────────────────────────────────────┐
+│                       Reranking Head (2-layer)                            │
+│                                                                           │
+│          z1 = GELU( Linear(cls_rep → d_int) )       # GELU activation     │
+│          z2 = LayerNorm( Dropout( z1 + cls_rep ) )  # residual to cls_rep │
+│          score = Linear(z2 → 1)                     # scalar logit        │
+└───────────────────────────────────────────────────────────────────────────┘
+                                   │
+                                   ▼
+                           Relevance Score s(q, title)
+```
 
 ---
 
