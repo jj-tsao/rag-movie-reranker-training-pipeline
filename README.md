@@ -1,4 +1,4 @@
-# 🎬 Reelix Cross-Encoder Reranker (Movie and TV Show)
+# Reelix Cross-Encoder Reranker (Movie and TV Show)
 
 This repository provides the **training and evaluation pipeline** for a cross-encoder reranker that improves movie and TV recommendations.
 
@@ -8,7 +8,7 @@ This repository provides the **training and evaluation pipeline** for a cross-en
 
 ---
 
-## 🔗 Related Projects
+## Related Projects
 
 - Live Product: [**Reelix AI**](https://reelixai.netlify.app/) 
 - Frontend app repo: [rag-movie-recommender-app](https://github.com/jj-tsao/rag-movie-recommender-app)  
@@ -16,9 +16,9 @@ This repository provides the **training and evaluation pipeline** for a cross-en
 
 ---
 
-## ✨ Features
+## Features
 
-### 🧠 The Model (Cross-Encoder Reranker)
+### The Model (Cross-Encoder Reranker)
 - **Understands Queries** — Encodes a free-form natural language request (e.g., “mind-bending sci-fi with philosophical undertones”).
 
 - *Reads Context* — Jointly considers query and full movie/TV metadata: title, genres, overview, tagline, director, cast, keywords, and year.
@@ -42,7 +42,7 @@ This repository provides the **training and evaluation pipeline** for a cross-en
 
 ---
 
-## 🧠 Model Architecture
+## Model Architecture
 
 - **Backbone:** `bert-base-uncased`
 - **Input packing:** `[CLS] {query} {title_context} `
@@ -119,7 +119,7 @@ Outputs (example JSONL):
 
 ---
 
-## 🏋️ Training
+## Training
 
 **Objective:** Pairwise margin ranking enforcing `score(pos) > score(neg)`.
 
@@ -136,7 +136,7 @@ Outputs (example JSONL):
 
 ---
 
-## 🧪 Evaluation
+## Evaluation
 
 **Held-out format:** each example has one positive:
 ```json
@@ -217,7 +217,7 @@ Reranker reduces thematic noise, especially in **Top-10**, producing a stronger 
 
 ---
 
-## 🔧 Repository layout
+## Repository layout
 
 ```
 rag-movie-reranker-training-pipeline/
@@ -266,7 +266,7 @@ rag-movie-reranker-training-pipeline/
 
 ---
 
-## 💻 Usage
+## Usage
 
 If exported as `AutoModelForSequenceClassification` (`num_labels=1`):
 
@@ -291,20 +291,20 @@ def score(query: str, context: str, max_len=320):
 
 ---
 
-## ⚖️ Limitations & Bias
+## Limitations & Bias
 
 - Relies on metadata richness; sparse records may be under-scored.
 - English-first; multilingual generalization depends on backbone & data.
 
 ---
 
-## 📄 License
+## License
 
 MIT
 
 ---
 
-## 📚 Citation
+## Citation
 
 ```
 @software{reelix_reranker_2025,
