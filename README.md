@@ -27,7 +27,7 @@ This repository provides the **training and evaluation pipeline** for a cross-en
 
 - **Re-Ranks Results** — Reorders candidates retrieved by dense + BM25 retrievers so the most semantically aligned items rank highest.
 
-### 🛠️ This Repository (Dataset Building + Model Training + Evaluation Pipeline)
+### This Repository (Dataset Building + Model Training + Evaluation Pipeline)
 
 - **Dataset Builder** — Constructs triplet training data {query, positive, negative, source} with negative sampling strategies.
 
