@@ -185,7 +185,7 @@ We rate the **on-briefness** of the top-k results using a simple rubric:
 **RS (Relevance Score)** is the mean label; **TNR = 1 − RS** (lower is better).
 
 #### How:
-For each query, a human labels top-k (k∈{10,20}) items for:
+For each query, using LLM for labeling top-k (k∈{10,20}) items for:
 - **Reranker** (cross-encoder + metadata RRF)
 - **Baseline** (metadata-only)
 
