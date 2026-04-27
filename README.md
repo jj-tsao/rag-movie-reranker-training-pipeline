@@ -177,7 +177,7 @@ The cross-encoder lifts early ranking quality (MRR, NDCG@k) and improves inclusi
 
 ---
 
-### Thematic Noise Ratio (TNR) — Human-in-the-loop Quality Check
+### Thematic Noise Ratio (TNR) — LLM-as-a-Judge Quality Check
 
 #### What:
 We rate the **on-briefness** of the top-k results using a simple rubric:  
